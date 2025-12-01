@@ -1,7 +1,8 @@
-import React from 'react'
-
+// Tarjeta para mostrar la informacion de un personaje
 export const CharCards = ( data) => {
     console.log("data en charcards ", data);
+
+
     const {name, id, status, image, species} = data.data
     return (
         <div className='charcard-main' key={id}>

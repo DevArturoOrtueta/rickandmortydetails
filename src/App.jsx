@@ -9,15 +9,20 @@ const App = () => {
   if (loading) return <div>Cargando...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
-  const characters = [data];
+  let characters = [];
+
+  if(data.name.length > 0){
+    characters =   [data];
+  }else if(data.results && data.results.length > 0){
+    characters = data.results;
+  }
+  
 
   console.log("data 2 ",characters);
   return (
     <div>
       {characters.map(c => (
         <CharCards data={c}  />
-        
-      
       ))}
     </div>
   )
