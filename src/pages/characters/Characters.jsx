@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useFetch } from '../../hooks/useFetch.js'
 import { CharCards } from '../../components/CharCards/CharCards.jsx';
-
+import './Characters.css'
 
 
 const Characters = () => {
@@ -45,9 +45,7 @@ const Characters = () => {
       {error && <div>Error: {error.message}</div>}
 
     <div className='charcard-section'>
-
-    </div>
-      {
+ {
         query.length !== 0
           ? (characters.length > 0
               ? characters.map(c => (
@@ -57,6 +55,8 @@ const Characters = () => {
             )
           : null
       }
+    </div>
+     
     </div>
   )
 }
