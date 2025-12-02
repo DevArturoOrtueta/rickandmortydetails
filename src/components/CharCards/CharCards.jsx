@@ -1,4 +1,5 @@
 import React from 'react'
+import './CharCards.css'
 
 // Tarjeta para mostrar la informacion de un personaje
 export const CharCards = (props) => {
@@ -18,11 +19,16 @@ export const CharCards = (props) => {
 
     return (
         <div className='charcard-main' /* key should be on parent map, not here */>
-            {image ? <img src={image} alt={name} /> : <div className="placeholder-img">No image</div>}
-            <h3>{name}</h3>
-            <p><strong>Status:</strong> {status}</p>
-            <p><strong>Species:</strong> {species}</p>
-            <p><strong>Location:</strong> {location && location.name ? location.name : 'Unknown'}</p>
+            <div className='charcard-image'>
+                {image ? <img src={image} alt={name} /> : <div className="placeholder-img">No image</div>}
+            </div>
+            <div className='charcard-information'>
+                <h3>{name}</h3>
+                <p><strong>Status:</strong> {status}</p>
+                <p><strong>Species:</strong> {species}</p>
+                <p><strong>Location:</strong> {location && location.name ? location.name : 'Unknown'}</p>
+            </div>
+
         </div>
     )
 }

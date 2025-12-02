@@ -1,0 +1,7 @@
+.charcard-main{
+    display: flex;
+    gap: 2em;
+    box-shadow: 3px 3px 0.5em;
+    border-radius: 1em;
+    content-visibility: auto;
+}
