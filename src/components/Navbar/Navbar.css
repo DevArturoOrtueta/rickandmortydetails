@@ -10,6 +10,7 @@
   gap: 2rem;
   padding: 0 2rem;
   margin: 0;
+  justify-content: center;
 }
 
 .navbar-link {
@@ -24,11 +25,11 @@
 }
 
 .navbar-link:hover {
-  color: #0066cc;
+  color: var(--primary-color);
 }
 
 .navbar-link.active {
-  color: #0066cc;
+  color: var(--primary-color);
   font-weight: bold;
 }
 
@@ -39,5 +40,5 @@
   left: 0;
   right: 0;
   height: 2px;
-  background-color: #0066cc;
+  background-color: var(--primary-color);
 }

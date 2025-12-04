@@ -13,3 +13,12 @@
     
 }
 
+#inputChar{
+    width: 50vw;
+    height: 2em;
+    font-size: 1em;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    outline-style: none;
+}
