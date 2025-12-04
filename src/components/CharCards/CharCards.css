@@ -4,4 +4,11 @@
     box-shadow: 3px 3px 0.5em;
     border-radius: 1em;
     content-visibility: auto;
+        margin: 2em;
+    min-width: 500px;
+    max-width: 500px;
+}
+
+.charcard-information{
+    flex-basis: fit-content;
 }

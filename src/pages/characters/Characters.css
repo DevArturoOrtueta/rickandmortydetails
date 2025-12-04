@@ -4,6 +4,7 @@
     align-items: center;
     margin-top: 1em;
     gap: 2em;
+    justify-content: center;
 }
 
 .charcard-section{
@@ -11,3 +12,4 @@
     flex-wrap: wrap;
     
 }
+
