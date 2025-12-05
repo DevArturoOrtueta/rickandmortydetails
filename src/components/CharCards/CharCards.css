@@ -1,14 +1,30 @@
 .charcard-main{
     display: flex;
     gap: 2em;
-    box-shadow: 3px 3px 0.5em;
+   box-shadow:0 1px 1px hsl(0deg 0% 0% / 0.075),
+      0 2px 2px hsl(0deg 0% 0% / 0.075),
+      0 4px 4px hsl(0deg 0% 0% / 0.075),
+      0 8px 8px hsl(0deg 0% 0% / 0.075),
+      0 16px 16px hsl(0deg 0% 0% / 0.075)
+    ;
     border-radius: 1em;
     content-visibility: auto;
         margin: 2em;
     min-width: 500px;
     max-width: 500px;
 }
+.charcard-main:hover{
+    transform: scale(0.97);
+    box-shadow: 0px 0px 20px 5px hsl(0deg 0% 0% / 0.1);
+    transition: transform 0.3s ease-in-out;
+    
+}
+
+.charcard-image img {
+    height: 100%;
+}
 
 .charcard-information{
     flex-basis: fit-content;
+    padding: 1em;
 }
