@@ -34,7 +34,7 @@ export const Episodes = () => {
    <div className='epimain-section'>
          <input
            type="text"
-           placeholder='Buscar Episodio...'
+           placeholder='Buscar episodio...'
            name='inputEpi'
            id='inputEpi'
            value={inputEpi}
