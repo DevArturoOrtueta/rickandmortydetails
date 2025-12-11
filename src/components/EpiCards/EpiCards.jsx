@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import '../EpiCards/EpiCards.css';
+import { CharactersModal } from '../CharactersModal/CharactersModal.jsx';
 
 // Tarjeta para mostrar la informacion de un personaje
 export const EpiCards = (props) => {
@@ -15,7 +17,8 @@ export const EpiCards = (props) => {
         created = ''
     } = epi || {};
 
-   
+    const [showModal, setShowModal] = useState(false);
+
     // Format created to yyyy-mm-dd (safe)
     const formatDate = (iso) => {
         if (!iso) return 'Unknown';
@@ -34,15 +37,27 @@ export const EpiCards = (props) => {
     const createdDate = formatDate(created);
 
     return (
-        <div className='charcard-main' /* key should be on parent map, not here */>
-            
-            <div className='charcard-information'>
-                <h3>{name}</h3>
-                <p><strong>Episode:</strong> {episode}</p>
-                <p><strong>Created:</strong> {createdDate}</p>
-                <p><strong>Air Date:</strong> {air_date}</p>
+        <>
+            <div
+                className='charcard-main'
+                onClick={() => setShowModal(true)}
+                style={{ cursor: 'pointer' }}
+            >
+                <div className='charcard-information'>
+                    <h3>{name}</h3>
+                    <p><strong>Episode:</strong> {episode}</p>
+                    <p><strong>Created:</strong> {createdDate}</p>
+                    <p><strong>Air Date:</strong> {air_date}</p>
+                    <p className='characters-count'><strong>Personajes:</strong> {characters.length || 0}</p>
+                </div>
             </div>
-
-        </div>
+            {showModal && (
+                <CharactersModal
+                    episodeName={name}
+                    characters={characters}
+                    onClose={() => setShowModal(false)}
+                />
+            )}
+        </>
     )
 }
