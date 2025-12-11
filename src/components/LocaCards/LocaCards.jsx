@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import '../LocaCards/LocaCards.css';
+import { ResidentsModal } from '../ResidentsModal/ResidentsModal.jsx';
 
 // Tarjeta para mostrar la informacion de un personaje
 export const LocaCards = (props) => {
@@ -15,7 +17,8 @@ export const LocaCards = (props) => {
         created = ''
     } = loca || {};
 
-   
+    const [showModal, setShowModal] = useState(false);
+
     // Format created to yyyy-mm-dd (safe)
     const formatDate = (iso) => {
         if (!iso) return 'Unknown';
@@ -34,15 +37,27 @@ export const LocaCards = (props) => {
     const createdDate = formatDate(created);
 
     return (
-        <div className='charcard-main' /* key should be on parent map, not here */>
-            
-            <div className='charcard-information'>
-                <h3>{name}</h3>
-                <p><strong>Type:</strong> {type}</p>
-                <p><strong>Dimension:</strong> {dimension}</p>
-                <p><strong>Created:</strong> {createdDate}</p>
+        <>
+            <div
+                className='charcard-main'
+                onClick={() => setShowModal(true)}
+                style={{ cursor: 'pointer' }}
+            >
+                <div className='charcard-information'>
+                    <h3>{name}</h3>
+                    <p><strong>Type:</strong> {type}</p>
+                    <p><strong>Dimension:</strong> {dimension}</p>
+                    <p><strong>Created:</strong> {createdDate}</p>
+                    <p className='residents-count'><strong>Residentes:</strong> {residents.length || 0}</p>
+                </div>
             </div>
-
-        </div>
+            {showModal && (
+                <ResidentsModal
+                    locationName={name}
+                    residents={residents}
+                    onClose={() => setShowModal(false)}
+                />
+            )}
+        </>
     )
 }
