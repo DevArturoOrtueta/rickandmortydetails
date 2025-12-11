@@ -2,42 +2,42 @@ import React, { useState } from 'react'
 import { useFetch } from '../../hooks/useFetch.js'
 import { CharCards } from '../../components/CharCards/CharCards.jsx';
 import './Locations.css'
-import { EpiCards } from '../../components/EpiCards/EpiCards.jsx';
+import { LocaCards } from '../../components/LocaCards/LocaCards.jsx';
 export const Locations = () => {
 
-  const [inputEpi, setInputEpi] = useState('');
+  const [inputLoca, setInputLoca] = useState('');
   const inputHandleChange = (e) => {
-    setInputEpi(e.target.value);
+    setInputLoca(e.target.value);
   }
 
-  const query = inputEpi.trim();
+  const query = inputLoca.trim();
   const url = query === ''
-    ? 'https://rickandmortyapi.com/api/episode'
-    : (/^\d+$/.test(query) ? `https://rickandmortyapi.com/api/episode/${query}` : `https://rickandmortyapi.com/api/episode/?name=${encodeURIComponent(query)}`);
+    ? 'https://rickandmortyapi.com/api/location/'
+    : (/^\d+$/.test(query) ? `https://rickandmortyapi.com/api/location/${query}` : `https://rickandmortyapi.com/api/location/?name=${encodeURIComponent(query)}`);
 
   const { data, loading, error } = useFetch(url, {});
 
-  let episodes = [];
+  let locations = [];
 
   if (data) {
     if (data.name) {
-      episodes = [data];
+    locations = [data];
     } else if (Array.isArray(data.results)) {
-      episodes = data.results;
+      locations = data.results;
     } else if (Array.isArray(data)) {
-      episodes = data;
+      locations = data;
     }
   }
   
-  console.log("episodes: ",episodes);
+
   return (
-   <div className='epimain-section'>
+   <div className='locamain-section'>
          <input
            type="text"
            placeholder='Buscar localizaciones...'
-           name='inputEpi'
-           id='inputEpi'
-           value={inputEpi}
+           name='inputLoca'
+           id='inputLoca'
+           value={inputLoca}
            onChange={inputHandleChange}
          />
    
@@ -45,14 +45,14 @@ export const Locations = () => {
          {loading && <div>Cargando...</div>}
          {error && <div>Error: {error.message}</div>}
    
-       <div className='epicard-section'>
+       <div className='locacard-section'>
     {
            query.length !== 0
-             ? (episodes.length > 0
-                 ? episodes.map(c => (
-                     <EpiCards key={c.id} {...c} />
+             ? (locations.length > 0
+                 ? locations.map(c => (
+                     <LocaCards key={c.id} {...c} />
                    ))
-                 : !loading && !error ? <div>No se encontraron episodios.</div> : null
+                 : !loading && !error ? <div>No se encontraron localizaciones.</div> : null
                )
              : null
          }
