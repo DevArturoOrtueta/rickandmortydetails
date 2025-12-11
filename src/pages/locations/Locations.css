@@ -1,0 +1,24 @@
+.epimain-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1em;
+    gap: 2em;
+    justify-content: center;
+}
+
+.epicard-section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#inputEpi{
+    width: 50vw;
+    height: 2em;
+    font-size: 1em;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    outline-style: none;
+}
