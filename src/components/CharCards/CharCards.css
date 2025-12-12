@@ -28,3 +28,27 @@
     flex-basis: fit-content;
     padding: 1em;
 }
+
+@media (max-width: 768px) {
+    .charcard-main {
+        min-width: 100%;
+        max-width: 100%;
+        margin: 1em;
+        flex-direction: column;
+        gap: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .charcard-main {
+        min-width: 100%;
+        max-width: 100%;
+        margin: 0.5em;
+        flex-direction: column;
+        gap: 0.5em;
+    }
+
+    .charcard-information {
+        padding: 0.5em;
+    }
+}
