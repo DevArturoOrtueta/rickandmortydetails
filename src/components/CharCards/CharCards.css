@@ -11,6 +11,7 @@
     margin: 2em;
     min-width: 500px;
     max-width: 500px;
+    cursor: pointer;
 }
 
 .charcard-main:hover {
@@ -22,6 +23,10 @@
 
 .charcard-image img {
     height: 100%;
+    width: 150px;
+    object-fit: cover;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
 }
 
 .charcard-information {
@@ -29,6 +34,70 @@
     padding: 1em;
 }
 
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 1rem;
+}
+
+.modal {
+    background: #fff;
+    border-radius: 8px;
+    max-width: 800px;
+    width: 100%;
+    max-height: calc(100vh - 4rem);
+    overflow: auto;
+    padding: 1.25rem 1.5rem;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.modal-close {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.25rem;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-section {
+    margin-top: 0.75rem;
+    border-top: 1px solid #eee;
+    padding-top: 0.75rem;
+}
+
+.episodes-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.episodes-list li {
+    padding: 0.25rem 0;
+    border-bottom: 1px dashed #f0f0f0;
+    font-size: 0.95rem;
+}
+
+.modal-loading,
+.modal-error {
+    color: #666;
+}
+
+/* Cuando se abre el modal, evitar scroll del body */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Responsive adjustments for tablets and phones */
 @media (max-width: 768px) {
     .charcard-main {
         min-width: 100%;
@@ -36,6 +105,17 @@
         margin: 1em;
         flex-direction: column;
         gap: 1em;
+    }
+
+    .charcard-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 1em 1em 0 0;
+    }
+
+    .modal {
+        max-width: 680px;
+        padding: 1rem;
     }
 }
 
@@ -50,5 +130,14 @@
 
     .charcard-information {
         padding: 0.5em;
+    }
+
+    .modal {
+        max-width: 100%;
+        padding: 0.75rem;
+    }
+
+    .modal-close {
+        font-size: 1.25rem;
     }
 }
